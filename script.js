@@ -15,39 +15,91 @@ function getComputerChoice() {
 
 // Write a function that plays a single round of Rock Paper Scissors. The function should take two parameters - the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
 // Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
+
+// function calcScore() {
+//     if (playerScore > computerScore) {
+//         console.log(`You won ${playerScore} rounds. The Computer won ${computerScore}. Congrats, you won!`);
+//     }
+//     else if (playerScore < computerScore) {
+//         console.log(`You won ${playerScore} rounds. The Computer won ${computerScore}. You lost, better luck next time!`);
+//     }
+//     else {
+//         console.log("Something must have gone wrong");
+//     }
+// }
+
+let playerScore = 0;
+let computerScore = 0;
+
 function singleRound () {
     getComputerChoice();
     let playerSelection = prompt("Enter Rock, Paper or Scissors: ");
     playerSelection = playerSelection.toLowerCase();
-    if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        return "You Win! Rock beats Scissors";
+    if (playerSelection != 'rock' && playerSelection != 'paper' && playerSelection != 'scissors') {
+        alert("Please restart the game and pick Rock, Paper or Scissors");
+        getComputerChoice();
+    }
+    else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        console.log(`You picked ${playerSelection}, the Computer picked ${computerSelection}`);
+        console.log("You Win! Rock beats Scissors");
+        playerScore = ++playerScore;
     }
     else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        return "You Lose! Paper beats Rock";
+        console.log(`You picked ${playerSelection}, the Computer picked ${computerSelection}`);
+        console.log("You Lose! Paper beats Rock");
+        computerScore = ++computerScore;
     }
     else if (playerSelection === 'rock' && computerSelection === 'rock') {
-        return "It's a Draw! You both picked Rock";
+        console.log(`You picked ${playerSelection}, the Computer picked ${computerSelection}`);
+        console.log("It's a Draw! You both picked Rock");
+        singleRound();
     }
     else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        return "You Win! Paper beats Rock";
+        console.log(`You picked ${playerSelection}, the Computer picked ${computerSelection}`);
+        console.log("You Win! Paper beats Rock");
+        playerScore = ++playerScore;
     }
     else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        return "You Lose! Scissors beats Paper";
+        console.log(`You picked ${playerSelection}, the Computer picked ${computerSelection}`);
+        console.log("You Lose! Scissors beats Paper");
+        computerScore = ++computerScore;
     }
     else if (playerSelection === 'paper' && computerSelection === 'paper') {
-        return "It's a Draw! You both picked Paper";
+        console.log(`You picked ${playerSelection}, the Computer picked ${computerSelection}`);
+        console.log("It's a Draw! You both picked Paper");
+        singleRound();
     }
     else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        return "You Win! Scissors beats Paper";
+        console.log(`You picked ${playerSelection}, the Computer picked ${computerSelection}`);
+        console.log("You Win! Scissors beats Paper");
+        playerScore = ++playerScore;
     }
     else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        return "You Lose! Rock beats Scissors";
+        console.log(`You picked ${playerSelection}, the Computer picked ${computerSelection}`);
+        console.log("You Lose! Rock beats Scissors");
+        computerScore = ++computerScore;
     }
     else {
-        return "It's a Draw! You both picked Scissors";
+        console.log("It's a Draw! You both picked Scissors");
+        singleRound();
     }
+
+    
 }
 
 function game () {
-    
+    for (let gamesPlayed = 1; (playerScore < 3 && computerScore < 3); gamesPlayed ++) {//(playerScore < 3 && computerScore < 3) Game ends when someone wins3rounds
+        singleRound();
+    }
+    if (playerScore > computerScore) {
+        console.log(`You won ${playerScore} rounds. The Computer won ${computerScore}. Congrats, you won!`);
+    }
+    else if (playerScore < computerScore) {
+        console.log(`You won ${playerScore} rounds. The Computer won ${computerScore}. You lost, better luck next time!`);
+    }
+    else {
+        console.log("Something must have gone wrong");
+    }
 }
+
+// To reset the score counter after a game without having to reload the page.
