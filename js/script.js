@@ -96,6 +96,7 @@ function gameover() {
   } else {
     gameReset.textContent = `Ouch! You lose ${playerScore}-${computerScore}!`;
   }
-  playerScore === 0;
-  computerScore === 0;
+  playerScore = 0;
+  computerScore = 0;
+  runningScore.textContent = `${playerScore} - ${computerScore}`;
 }
