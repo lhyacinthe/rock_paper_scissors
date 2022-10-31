@@ -1,4 +1,3 @@
-// Your game is going to play against the computer, so begin with a function called getComputerChoice that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’. We’ll use this function in the game to make the computer’s play. Tip: use the console to make sure this is returning the expected output before moving to the next step!
 function getComputerChoice() {
     computerSelection = Math.floor(Math.random() * 3 + 1);
     if (computerSelection === 1) {
@@ -67,21 +66,6 @@ function playRound () {
     }
     scoreDisplay();
 }
-
-// function game () {
-//     for (let gamesPlayed = 1; (playerScore < 3 && computerScore < 3); gamesPlayed ++) {//(playerScore < 3 && computerScore < 3) Game ends when someone wins3rounds
-//         playRound();
-//     }
-//     if (playerScore > computerScore) {
-//         console.log(`You won ${playerScore} rounds. The Computer won ${computerScore}. Congrats, you won!`);
-//     }
-//     else if (playerScore < computerScore) {
-//         console.log(`You won ${playerScore} rounds. The Computer won ${computerScore}. You lost, better luck next time!`);
-//     }
-//     else {
-//         console.log("Something must have gone wrong");
-//     }
-// }
 
 const rockBtn = document.querySelector('#rockBtn');
 const paperBtn = document.querySelector('#paperBtn');
