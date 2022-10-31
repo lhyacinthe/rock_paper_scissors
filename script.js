@@ -13,21 +13,6 @@ function getComputerChoice() {
     return computerSelection;
 }
 
-// Write a function that plays a single round of Rock Paper Scissors. The function should take two parameters - the playerSelection and computerSelection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock"
-// Make your function’s playerSelection parameter case-insensitive (so users can input rock, ROCK, RocK or any other variation).
-
-// function calcScore() {
-//     if (playerScore > computerScore) {
-//         console.log(`You won ${playerScore} rounds. The Computer won ${computerScore}. Congrats, you won!`);
-//     }
-//     else if (playerScore < computerScore) {
-//         console.log(`You won ${playerScore} rounds. The Computer won ${computerScore}. You lost, better luck next time!`);
-//     }
-//     else {
-//         console.log("Something must have gone wrong");
-//     }
-// }
-
 let playerScore = 0;
 let computerScore = 0;
 let playerSelection;
@@ -70,15 +55,17 @@ function playRound () {
     else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         resultsDiv.textContent = `You picked ${playerSelection}, the Computer picked ${computerSelection}.\nYou Win! Scissors beats Paper`;
         // resultsDiv.textContent = "You Win! Scissors beats Paper";
+        playerScore = ++playerScore;
     }
     else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         resultsDiv.textContent = `You picked ${playerSelection}, the Computer picked ${computerSelection}.\nYou Lose! Rock beats Scissors`;
         // resultsDiv.textContent = "You Lose! Rock beats Scissors";
         computerScore = ++computerScore;
     }
-    else {
+    else if (playerSelection === 'scissors' && computerSelection === 'scissors') {
         resultsDiv.textContent = `You picked ${playerSelection}, the Computer picked ${computerSelection}.\nIt's a Draw! You both picked Scissors`;
     }
+    scoreDisplay();
 }
 
 // function game () {
@@ -99,17 +86,47 @@ function playRound () {
 const rockBtn = document.querySelector('#rockBtn');
 const paperBtn = document.querySelector('#paperBtn');
 const scissorsBtn = document.querySelector('#scissorsBtn');
-const resultsDiv = document.querySelector('#results')
+const resultsDiv = document.querySelector('#results');
+
 rockBtn.addEventListener('click', () => {
-    playerSelection='rock';
+    playerSelection = 'rock';
     playRound();
 });
 paperBtn.addEventListener('click', () => {
-    playerSelection='paper';
+    playerSelection = 'paper';
     playRound();
 });
 scissorsBtn.addEventListener('click', () => {
-    playerSelection='scissors';
+    playerSelection = 'scissors';
     playRound();
 });
 
+const scoreBox = document.querySelector('#scoreBox');
+const runningScore = document.createElement('div');
+scoreBox.appendChild(runningScore);
+
+function scoreDisplay() {
+    runningScore.textContent = `${playerScore} - ${computerScore}`;
+    if (playerScore === 5 && playerScore > computerScore) {
+        runningScore.textContent = `${playerScore} - ${computerScore}`;
+        gameover();
+    }
+    
+    else if (computerScore === 5 && computerScore > playerScore) {
+        runningScore.textContent = `${playerScore} - ${computerScore}`;
+        gameover();
+    }
+}
+
+function gameover() {
+    const gameReset = document.createElement('div');
+    scoreBox.appendChild(gameReset);
+    if (playerScore > computerScore) {
+        gameReset.textContent = `Congrats! You win ${playerScore}-${computerScore}!`;
+    }
+    else {
+        gameReset.textContent = `Ouch! You lose ${playerScore}-${computerScore}!`;
+    }
+    playerScore === 0;
+    computerScore === 0;
+}
