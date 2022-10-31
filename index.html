@@ -10,14 +10,24 @@
 </head>
 
 <body>
-    <input id="rockBtn" class="btn" type="button" value="Rock">
-    <input id="paperBtn" class="btn" type="button" value="Paper">
-    <input id="scissorsBtn" class="btn" type="button" value="Scissors">
-    <div id="results">
+    <h1>Rock Paper Scissors</h1>
+    <div class="content">
+        <div>
+            <h2>Select a button to begin the round.</h2>
+        </div>
+        <div id="btnContainer">
+            <input id="rockBtn" class="btn" type="image" src="./images/rock.png" value="Rock">
+            <input id="paperBtn" class="btn" type="image" src="./images/paper.png" value="Paper">
+            <input id="scissorsBtn" class="btn" type="image" src="./images/scissors.png" value="Scissors">
+        </div>
+        <br>
+        <div id="results">
+        </div>
+        <div id="scoreBox">
+            <h2>SCORE</h2>
+        </div>
     </div>
-    <div id="scoreBox">
-        <h2>SCORE</h2>
-    </div>
+    <footer><p id="footerContent">This is a small project for <a href="https://theodinproject.com" target="_blank">theodinproject</a>. The goal is to make a simple 5 rounds game of Rock Paper Scissors work by using JavaScript.</p></footer>
     <script src="./js/script.js"></script>
 </body>
 
